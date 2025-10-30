@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!--
-	Miniport — Xian Wang (updated: larger research cards + contact under photo)
+	Miniport — Xian Wang (research photos fully visible; contact section removed)
 -->
 <html>
 	<head>
@@ -12,225 +12,162 @@
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 		<style>
-			:root {
-				--green-1: #0b6b3a;
-				--green-2: #249b5a;
-				--green-3: #7fd08d;
-				--accent: #2d6a4f;
-				--muted: #6b6b6b;
-				--card-bg: rgba(255,255,255,0.96);
-				--research-accent: #0f5e36;
+			:root{
+				--green-1:#0b6b3a;
+				--green-2:#249b5a;
+				--green-3:#7fd08d;
+				--muted:#6b6b6b;
+				--card-bg:rgba(255,255,255,0.96);
+				--research-accent:#0f5e36;
 			}
 
-			html, body {
-				font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-				color: #223;
-				background: linear-gradient(180deg, #f7fbf7 0%, #f0f7f0 100%);
-				line-height: 1.55;
-				margin: 0;
-				padding: 0;
+			html,body{
+				font-family:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+				color:#223;
+				background:linear-gradient(180deg,#f7fbf7 0%,#f0f7f0 100%);
+				line-height:1.55;
+				margin:0;
+				padding:0;
 			}
 
-			/* NAV */
-			#nav {
-				background: linear-gradient(90deg, rgba(255,255,255,0.82), rgba(255,255,255,0.6));
-				border-bottom: 1px solid rgba(33,33,33,0.06);
-				position: sticky;
-				top: 0;
-				z-index: 40;
-				backdrop-filter: blur(6px);
-				box-shadow: 0 6px 18px rgba(10,30,10,0.03);
+			/* NAV (Contact link removed) */
+			#nav{
+				background:linear-gradient(90deg, rgba(255,255,255,0.82), rgba(255,255,255,0.6));
+				border-bottom:1px solid rgba(33,33,33,0.06);
+				position:sticky;
+				top:0;
+				z-index:40;
+				backdrop-filter:blur(6px);
+				box-shadow:0 6px 18px rgba(10,30,10,0.03);
 			}
-			#nav .container { display:flex; gap:1rem; align-items:center; padding:0.65rem 1rem; justify-content:center; }
-			#nav ul { list-style:none; margin:0; padding:0; display:flex; gap:1rem; }
-			#nav a {
-				color:var(--green-1);
-				text-decoration:none;
-				font-weight:600;
-				padding:0.5rem 0.9rem;
-				border-radius:6px;
-				transition:all .18s ease;
-			}
-			#nav a:hover {
-				background:var(--green-3);
-				color:#08321a;
-				transform:translateY(-2px);
-				box-shadow:0 6px 14px rgba(37,94,58,0.08);
-			}
+			#nav .container{display:flex;gap:1rem;align-items:center;padding:0.65rem 1rem;justify-content:center;}
+			#nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem;}
+			#nav a{color:var(--green-1);text-decoration:none;font-weight:600;padding:0.5rem 0.9rem;border-radius:6px;transition:all .18s ease;}
+			#nav a:hover{background:var(--green-3);color:#08321a;transform:translateY(-2px);box-shadow:0 6px 14px rgba(37,94,58,0.08);}
 
-			/* HERO / Hi */
-			.wrapper.style1 { padding: 3.2rem 0; }
-			#Hi .container { display:flex; gap:2rem; align-items:center; justify-content:center; flex-wrap:wrap; }
-			#Hi .image.fit img {
-				width:100%;
-				height:auto;
-				border-radius:12px;
-				box-shadow:0 12px 30px rgba(21,50,21,0.06);
-				border:1px solid rgba(10,40,10,0.05);
-			}
-			#Hi header h1 { font-size: clamp(1.6rem, 2.8vw, 2.4rem); margin:0 0 .5rem; color:var(--green-1); }
-			#Hi p { margin:0 0 1rem; color:#264; max-width:56ch; }
-			#Hi .contact-info {
-				margin-top: 0.6rem;
-				color: var(--green-1);
-				font-weight: 600;
-				font-size: 0.95rem;
-				line-height:1.35;
-			}
-			.button.large.scrolly {
+			/* HOME */
+			.wrapper.style1{padding:3.2rem 0;}
+			#Hi .container{display:flex;gap:2rem;align-items:center;justify-content:center;flex-wrap:wrap;}
+			#Hi .image.fit img{width:100%;height:auto;border-radius:12px;box-shadow:0 12px 30px rgba(21,50,21,0.06);border:1px solid rgba(10,40,10,0.05);}
+			#Hi header h1{font-size:clamp(1.6rem,2.8vw,2.4rem);margin:0 0 .5rem;color:var(--green-1);}
+			#Hi p{margin:0 0 1rem;color:#264;max-width:56ch;}
+			#Hi .contact-info{margin-top:0.6rem;color:var(--green-1);font-weight:600;font-size:0.95rem;line-height:1.35;}
+			.button.large.scrolly{
 				background:linear-gradient(180deg,var(--green-2),var(--green-1));
-				color:white;
-				padding:0.65rem 1rem;
-				border-radius:10px;
-				text-decoration:none;
-				font-weight:700;
+				color:white;padding:0.65rem 1rem;border-radius:10px;text-decoration:none;font-weight:700;
 				box-shadow:0 10px 24px rgba(18,72,39,0.12);
 			}
-			.button.large.scrolly:hover { transform:translateY(-3px); }
+			.button.large.scrolly:hover{transform:translateY(-3px);}
 
-			/* RESEARCH - centered header; bigger cards + taller thumbnails */
-			.wrapper.style3 {
-				background: transparent;
-				padding: 3rem 0 2rem;
-				text-align: center;
+			/* RESEARCH — centered header; make cards bigger; show full photos (contain) */
+			.wrapper.style3{
+				background:transparent;
+				padding:3rem 0 2rem;
+				text-align:center;
 			}
-			.wrapper.style3 header {
-				max-width: 900px;
-				margin: 0 auto 2rem;
+			.wrapper.style3 header{max-width:900px;margin:0 auto 2rem;}
+			.wrapper.style3 header h2{
+				color:var(--research-accent);
+				font-weight:700;
+				font-size:1.6rem;
+				margin-bottom:0.5rem;
 			}
-			.wrapper.style3 header h2 {
-				color: var(--research-accent);
-				font-weight: 700;
-				font-size: 1.6rem;
-				margin-bottom: 0.5rem;
-			}
-			.wrapper.style3 header p {
-				color: rgba(25,70,35,0.85);
-				font-size: 1rem;
-				line-height: 1.6;
+			.wrapper.style3 header p{
+				color:rgba(25,70,35,0.85);
+				font-size:1rem;
+				line-height:1.6;
 			}
 
-			.box.style2 {
-				background: var(--card-bg);
-				border-radius: 12px;
-				padding: 0.9rem;
-				box-shadow: 0 10px 26px rgba(10,30,10,0.05);
-				border-left: 6px solid rgba(37,94,58,0.12);
-				transition: transform .16s ease, box-shadow .16s ease, border-left-color .16s ease;
-				min-height: 520px; /* INCREASED vertical space so images show fully */
-				display: flex;
-				flex-direction: column;
-				justify-content: flex-start;
+			/* Larger card with a tall image box; image uses contain so whole image is visible */
+			.box.style2{
+				background:var(--card-bg);
+				border-radius:12px;
+				padding:0.9rem;
+				box-shadow:0 10px 26px rgba(10,30,10,0.05);
+				border-left:6px solid rgba(37,94,58,0.12);
+				transition:transform .16s ease,box-shadow .16s ease,border-left-color .16s ease;
+				min-height:620px; /* larger card */
+				display:flex;
+				flex-direction:column;
+				justify-content:flex-start;
 			}
-			.box.style2:hover {
-				transform: translateY(-6px);
-				box-shadow: 0 22px 48px rgba(12,45,20,0.08);
-				border-left-color: var(--green-2);
-			}
-			.box.style2 .image.featured img {
-				width: 100%;
-				height: 320px; /* TALLER thumbnail so most photos are fully visible */
-				object-fit: cover;
-				border-radius: 8px;
-				display: block;
-				margin-bottom: 0.8rem;
-			}
-			.box.style2 h3 {
-				margin: 0 0 0.35rem;
-				font-size: 1.12rem;
-				color: var(--green-1);
-				font-weight: 700;
-			}
-			.box.style2 p {
-				margin: 0;
-				color: #2d3b2d;
-				font-size: 0.97rem;
-				line-height: 1.55;
+			.box.style2:hover{
+				transform:translateY(-6px);
+				box-shadow:0 22px 48px rgba(12,45,20,0.08);
+				border-left-color:var(--green-2);
 			}
 
-			/* FUN (single row on wide screens) */
-			.wrapper.style2 { padding: 2.25rem 0; }
-			.wrapper.style2 .row.aln-center {
+			/* image container: fixed tall area, neutral background, center image */
+			.box.style2 .image.featured{
+				width:100%;
+				height:380px; /* tall container so most images fit */
+				border-radius:8px;
+				overflow:hidden;
+				display:flex;
+				align-items:center;
+				justify-content:center;
+				background: linear-gradient(180deg, #fbfdfb, #f2faf2);
+				margin-bottom:0.8rem;
+			}
+			/* show full image: contain (no cropping), preserve aspect ratio */
+			.box.style2 .image.featured img{
+				max-width:100%;
+				max-height:100%;
+				width:auto;
+				height:auto;
+				object-fit:contain;
+				display:block;
+			}
+
+			.box.style2 h3{margin:0 0 0.35rem;font-size:1.12rem;color:var(--green-1);font-weight:700;}
+			.box.style2 p{margin:0;color:#2d3b2d;font-size:0.97rem;line-height:1.55;}
+
+			/* FUN */
+			.wrapper.style2{padding:2.25rem 0;}
+			.wrapper.style2 .row.aln-center{
 				display:flex;
 				flex-wrap:nowrap;
 				justify-content:center;
 				align-items:stretch;
 				gap:1.5rem;
 			}
-			.box.style1 {
+			.box.style1{
 				background:linear-gradient(180deg,rgba(255,255,255,0.95),rgba(246,255,246,0.95));
-				border-radius:12px;
-				padding:0.65rem;
-				text-align:center;
-				transition:transform .18s ease, box-shadow .18s ease;
-				border:1px solid rgba(34,85,34,0.06);
-				flex:1 1 30%;
-				max-width:360px;
+				border-radius:12px;padding:0.65rem;text-align:center;
+				transition:transform .18s ease,box-shadow .18s ease;border:1px solid rgba(34,85,34,0.06);
+				flex:1 1 30%;max-width:360px;
 			}
-			.box.style1:hover { transform:translateY(-6px); box-shadow:0 20px 40px rgba(15,60,20,0.08); }
-			.box.style1 .image.fit img {
-				width:100%;
-				height:220px;
-				object-fit:cover;
-				border-radius:10px;
-				display:block;
-				margin-bottom:0.6rem;
-			}
-			.box.style1 h3 { margin:0.25rem 0; color:var(--green-1); font-size:1.05rem; }
-			.box.style1 p { margin:0; color:var(--muted); font-size:0.95rem; }
+			.box.style1:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(15,60,20,0.08);}
+			.box.style1 .image.fit img{width:100%;height:220px;object-fit:cover;border-radius:10px;display:block;margin-bottom:0.6rem;}
+			.box.style1 h3{margin:0.25rem 0;color:var(--green-1);font-size:1.05rem;}
+			.box.style1 p{margin:0;color:var(--muted);font-size:0.95rem;}
 
-			@media (max-width:1100px) {
-				/* slightly reduce research thumbnail height on medium screens */
-				.box.style2 .image.featured img { height:260px; }
+			/* responsive adjustments */
+			@media (max-width:1100px){
+				.box.style2{min-height:560px;}
+				.box.style2 .image.featured{height:300px;}
 			}
-			@media (max-width:850px) {
-				.wrapper.style2 .row.aln-center { flex-wrap:wrap; }
-				.box.style1 { flex:1 1 100%; max-width:100%; }
-				.box.style2 { min-height: auto; }
-				.box.style2 .image.featured img { height:180px; object-fit:cover; }
+			@media (max-width:850px){
+				.wrapper.style2 .row.aln-center{flex-wrap:wrap;}
+				.box.style1{flex:1 1 100%;max-width:100%;}
+				.box.style2{min-height:auto;}
+				.box.style2 .image.featured{height:220px;}
+				#Hi .container{padding:0 1rem;}
 			}
 
-			/* CONTACT */
-			.wrapper.style4 {
-				background:linear-gradient(180deg,rgba(250,255,250,0.8),rgba(244,252,240,0.8));
-				padding:2.25rem 0;
-				border-top:1px solid rgba(20,60,20,0.03);
-			}
-			.wrapper.style4 header h2 { color:var(--green-2); margin-bottom:0.25rem; }
-			.wrapper.style4 header p { color:var(--muted); margin-bottom:1rem; }
-			.form input[type="text"], textarea {
-				border-radius:8px;
-				border:1px solid rgba(20,60,20,0.08);
-				padding:0.7rem;
-				width:100%;
-				box-sizing:border-box;
-				background:white;
-			}
-			.actions input[type="submit"] {
-				background:var(--green-2);
-				color:white;
-				border:0;
-				font-weight:600;
-				cursor:pointer;
-				padding:0.65rem 1rem;
-				border-radius:8px;
-			}
-			.actions input[type="submit"]:hover { transform:translateY(-2px); box-shadow:0 8px 18px rgba(18,80,44,0.12); }
-			.social { display:flex; gap:0.75rem; padding:0; list-style:none; align-items:center; }
-			.social a { display:inline-block; padding:0.4rem 0.6rem; border-radius:6px; background:rgba(10,40,10,0.03); color:var(--green-1); text-decoration:none; font-weight:600; }
-			#copyright { display:flex; gap:1rem; justify-content:center; color:rgba(20,50,20,0.6); font-size:0.9rem; padding:0.6rem 0; }
+			/* small niceties */
+			#copyright{display:flex;gap:1rem;justify-content:center;color:rgba(20,50,20,0.6);font-size:0.9rem;padding:0.6rem 0;}
 		</style>
 	</head>
 
 	<body class="is-preload" onload="window.location.hash='#Hi'">
 
-		<!-- Nav -->
+		<!-- Nav: Contact link removed -->
 		<nav id="nav">
 			<ul class="container">
 				<li><a href="#Hi">Hi</a></li>
 				<li><a href="#Research">Research</a></li>
 				<li><a href="#Fun">Fun</a></li>
-				<li><a href="#contact">Contact</a></li>
 			</ul>
 		</nav>
 
@@ -258,10 +195,13 @@
 					<h2>Here’s some stuff I do.</h2>
 					<p>My work advances ecosystem ecology and environmental data science by linking ecological processes with novel sensing technologies and computational approaches to understand and manage ecosystems under global change.</p>
 				</header>
+
 				<div class="row">
 					<div class="col-4 col-6-medium col-12-small">
 						<article class="box style2">
-							<a href="https://scholar.google.com/citations?user=FePDnVwAAAAJ&hl=en" class="image featured" target="_blank" rel="noopener noreferrer"><img src="images/pic01.jpg" alt="No-till" /></a>
+							<a href="https://scholar.google.com/citations?user=FePDnVwAAAAJ&hl=en" class="image featured" target="_blank" rel="noopener noreferrer">
+								<img src="images/pic01.jpg" alt="No-till" />
+							</a>
 							<h3>No-till</h3>
 							<p>No-till farming provides an albedo-driven climate benefit of roughly 50 ± 10 g CO₂-eq m⁻² yr⁻¹—similar to cover cropping (Wang et al., 2025, Nat. Commun. Earth Environ.)</p>
 						</article>
@@ -269,7 +209,9 @@
 
 					<div class="col-4 col-6-medium col-12-small">
 						<article class="box style2">
-							<a href="https://scholar.google.com/citations?user=FePDnVwAAAAJ&hl=en" class="image featured" target="_blank" rel="noopener noreferrer"><img src="images/pic02.jpg" alt="Cover cropping" /></a>
+							<a href="https://scholar.google.com/citations?user=FePDnVwAAAAJ&hl=en" class="image featured" target="_blank" rel="noopener noreferrer">
+								<img src="images/pic02.jpg" alt="Cover cropping" />
+							</a>
 							<h3>Cover cropping</h3>
 							<p>Cover crops may help rebuild Midwest cropland soil carbon.</p>
 						</article>
@@ -277,7 +219,9 @@
 
 					<div class="col-4 col-6-medium col-12-small">
 						<article class="box style2">
-							<a href="https://scholar.google.com/citations?user=FePDnVwAAAAJ&hl=en" class="image featured" target="_blank" rel="noopener noreferrer"><img src="images/pic03.jpg" alt="Forest carbon flux" /></a>
+							<a href="https://scholar.google.com/citations?user=FePDnVwAAAAJ&hl=en" class="image featured" target="_blank" rel="noopener noreferrer">
+								<img src="images/pic03.jpg" alt="Forest carbon flux" />
+							</a>
 							<h3>Forest carbon flux baseline mapping</h3>
 							<p>Integrating satellite observations and tower flux data.</p>
 						</article>
@@ -285,7 +229,9 @@
 
 					<div class="col-4 col-6-medium col-12-small">
 						<article class="box style2">
-							<a href="https://scholar.google.com/citations?user=FePDnVwAAAAJ&hl=en" class="image featured" target="_blank" rel="noopener noreferrer"><img src="images/pic04.jpg" alt="Proximal measurements" /></a>
+							<a href="https://scholar.google.com/citations?user=FePDnVwAAAAJ&hl=en" class="image featured" target="_blank" rel="noopener noreferrer">
+								<img src="images/pic04.jpg" alt="Proximal measurements" />
+							</a>
 							<h3>Proximal measurements</h3>
 							<p>Solar-induced fluorescence and reflectance capture seasonal productivity and drought stress in semiarid grasslands.</p>
 						</article>
@@ -293,7 +239,9 @@
 
 					<div class="col-4 col-6-medium col-12-small">
 						<article class="box style2">
-							<a href="https://scholar.google.com/citations?user=FePDnVwAAAAJ&hl=en" class="image featured" target="_blank" rel="noopener noreferrer"><img src="images/pic05.jpg" alt="Dryland monitoring" /></a>
+							<a href="https://scholar.google.com/citations?user=FePDnVwAAAAJ&hl=en" class="image featured" target="_blank" rel="noopener noreferrer">
+								<img src="images/pic05.jpg" alt="Dryland monitoring" />
+							</a>
 							<h3>Advancing dryland ecosystem monitoring</h3>
 							<p>Providing a multi-scale, data-driven approach for quantifying ecosystem processes under variable environmental conditions.</p>
 						</article>
@@ -301,13 +249,14 @@
 
 					<div class="col-4 col-6-medium col-12-small">
 						<article class="box style2">
-							<a href="https://scholar.google.com/citations?user=FePDnVwAAAAJ&hl=en" class="image featured" target="_blank" rel="noopener noreferrer"><img src="images/pic06.jpg" alt="Global Phenology" /></a>
+							<a href="https://scholar.google.com/citations?user=FePDnVwAAAAJ&hl=en" class="image featured" target="_blank" rel="noopener noreferrer">
+								<img src="images/pic06.jpg" alt="Global Phenology" />
+							</a>
 							<h3>Global Phenology</h3>
 							<p>Ecosystems begin growth in sync but diverge later, offering insights into vegetation development and decline.</p>
 						</article>
 					</div>
 				</div>
-				<!-- removed placeholder text here -->
 			</div>
 		</article>
 
@@ -346,56 +295,6 @@
 				<footer style="margin-top:1.25rem;">
 					<p style="color:var(--muted);">I keep my site research-first, but plants and small green projects sneak in here and there.</p>
 					<a href="#Research" class="button large scrolly" style="background:linear-gradient(180deg,var(--green-3),var(--green-2));">Back to research</a>
-				</footer>
-			</div>
-		</article>
-
-		<!-- Contact -->
-		<article id="contact" class="wrapper style4">
-			<div class="container medium">
-				<header>
-					<h2>Work with me</h2>
-					<p>my email: xw91@iu.edu • ahunwx@gmail.com</p>
-				</header>
-				<div class="row">
-					<div class="col-12">
-						<form method="post" action="#" class="form">
-							<div class="row" style="gap:0.8rem;">
-								<div class="col-6 col-12-small">
-									<input type="text" name="name" id="name" placeholder="Name" />
-								</div>
-								<div class="col-6 col-12-small">
-									<input type="text" name="email" id="email" placeholder="Email" />
-								</div>
-								<div class="col-12">
-									<input type="text" name="subject" id="subject" placeholder="Subject" />
-								</div>
-								<div class="col-12">
-									<textarea name="message" id="message" placeholder="Message" rows="6"></textarea>
-								</div>
-								<div class="col-12">
-									<ul class="actions" style="display:flex; gap:0.6rem; padding:0; list-style:none;">
-										<li><input type="submit" value="Send Message" /></li>
-										<li><input type="reset" value="Clear Form" class="alt" /></li>
-									</ul>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div class="col-12" style="margin-top:1rem;">
-						<hr />
-						<h3 style="color:var(--green-1);">Find me on ...</h3>
-						<ul class="social">
-							<li><a href="https://www.linkedin.com/jobs/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-						</ul>
-						<hr />
-					</div>
-				</div>
-				<footer>
-					<ul id="copyright">
-						<li>&copy; Xian Wang. All rights reserved.</li>
-						<li style="color:var(--muted)">Design: HTML5 UP (modified)</li>
-					</ul>
 				</footer>
 			</div>
 		</article>
