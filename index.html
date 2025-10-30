@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!--
-	Miniport — Xian Wang (final version with fun Research header + fixed research cards)
+	Miniport — Xian Wang (final fix: centered research photos + visible green titles)
 -->
 <html>
 	<head>
@@ -74,50 +74,63 @@
 				max-width:800px;
 				margin:0 auto;
 			}
-			/* Make it more fun! */
-			.wrapper.style3 header h2 span{
-				color:var(--green-2);
-				font-weight:700;
-			}
+			.wrapper.style3 header h2 span{color:var(--green-2);font-weight:700;}
 
-			/* Research cards (proper card layout, no image overlap) */
-			.row{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;}
+			/* Research cards */
+			.row{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;}
 			.col-4{flex:1 1 30%;max-width:360px;}
 
 			.box.style2{
 				background:var(--card-bg);
 				border-radius:12px;
-				padding:0.9rem;
+				padding:1rem;
 				box-shadow:0 10px 26px rgba(10,30,10,0.05);
 				border-left:6px solid rgba(37,94,58,0.12);
 				transition:transform .16s ease,box-shadow .16s ease,border-left-color .16s ease;
 				display:flex;
 				flex-direction:column;
+				align-items:center;
+				text-align:left;
 			}
 			.box.style2:hover{
 				transform:translateY(-6px);
 				box-shadow:0 22px 48px rgba(12,45,20,0.08);
 				border-left-color:var(--green-2);
 			}
+
 			.box.style2 .image.featured{
 				width:100%;
+				height:auto;
 				border-radius:8px;
-				overflow:hidden;
-				background: linear-gradient(180deg, #fbfdfb, #f2faf2);
-				margin-bottom:0.8rem;
+				background:#f4faf4;
 				display:flex;
 				align-items:center;
 				justify-content:center;
+				padding:0.5rem;
+				margin-bottom:0.8rem;
 			}
 			.box.style2 .image.featured img{
-				width:100%;
+				max-width:100%;
 				height:auto;
-				max-height:380px;
 				object-fit:contain;
 				display:block;
+				margin:auto;
 			}
-			.box.style2 h3{margin:0.4rem 0 0.25rem;font-size:1.12rem;color:var(--green-1);font-weight:700;}
-			.box.style2 p{margin:0;color:#2d3b2d;font-size:0.97rem;line-height:1.55;}
+
+			.box.style2 h3{
+				margin:0.4rem 0 0.3rem;
+				font-size:1.1rem;
+				color:var(--green-1);
+				font-weight:700;
+				text-align:center;
+			}
+			.box.style2 p{
+				margin:0;
+				color:#2d3b2d;
+				font-size:0.97rem;
+				line-height:1.55;
+				text-align:center;
+			}
 
 			/* FUN */
 			.wrapper.style2{padding:2.25rem 0;}
