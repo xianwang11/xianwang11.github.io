@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!--
-	Miniport — Xian Wang (sparser, flowing American ivy in gutters)
+	Miniport — Xian Wang (research photos moved closer to green titles)
 -->
 <html>
 	<head>
@@ -182,6 +182,13 @@
 				border-left-color:var(--green-2);
 			}
 
+			/* --- TIGHTENED SPACING: TITLE ABOVE IMAGE --- */
+			.box.style2 h3{
+				margin:0 0 0.18rem; /* reduced bottom margin so image sits closer */
+				font-size:1.1rem;
+				color:var(--green-1);
+				font-weight:700;
+			}
 			.box.style2 .image.featured{
 				width:100%;
 				border-radius:8px;
@@ -189,9 +196,9 @@
 				display:flex;
 				align-items:center;
 				justify-content:center;
-				padding:0.5rem;
-				margin-top:0.5rem;
-				margin-bottom:0.8rem;
+				padding:0.35rem; /* slightly smaller padding */
+				margin-top:0; /* removed extra top space */
+				margin-bottom:0.6rem; /* keep small gap to text */
 			}
 			.box.style2 .image.featured img{
 				max-width:100%;
@@ -201,12 +208,6 @@
 				margin:auto;
 			}
 
-			.box.style2 h3{
-				margin:0.3rem 0;
-				font-size:1.1rem;
-				color:var(--green-1);
-				font-weight:700;
-			}
 			.box.style2 p{
 				margin:0;
 				color:#2d3b2d;
@@ -371,4 +372,3 @@
 		</div><!-- end .main-frame -->
 	</body>
 </html>
-
