@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!--
-	Miniport — Xian Wang (titles above photos + decorative vine border)
+	Miniport — Xian Wang (vines moved inside page gutters; realistic leaf shapes)
 -->
 <html>
 	<head>
@@ -19,6 +19,7 @@
 				--muted:#6b6b6b;
 				--card-bg:rgba(255,255,255,0.96);
 				--research-accent:#0f5e36;
+				--vine-width:110px; /* gutter reserved for vines */
 			}
 
 			html,body{
@@ -30,109 +31,93 @@
 				padding:0;
 			}
 
-			/* --- VINE BORDER (decorative only) --- */
-			/* Four fixed-position decorative elements (top/left/right/bottom).
-			   They are pointer-events:none so they never interfere with clicking. */
-			.vine {
-				position: fixed;
-				pointer-events: none;
-				z-index: 9999;
-				opacity: 0.92;
-				mix-blend-mode: normal;
-			}
-
-			/* Inline SVG data URLs used for the vine artwork */
-			.vine-left, .vine-right {
-				top: 0;
-				bottom: 0;
-				width: 72px;
-				background-repeat: repeat-y;
-				background-position: center;
-			}
-			.vine-left {
-				left: 0;
-				background-image: url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='72' height='200' viewBox='0 0 72 200'>\
-<path d='M22 0 C28 28 6 56 22 86 C38 116 12 146 22 176' stroke='%230b6b3a' stroke-width='2' fill='none' stroke-linecap='round'/>\
-<g fill='%237fd08d'>\
-<ellipse cx='18' cy='28' rx='6' ry='4'/>\
-<ellipse cx='26' cy='60' rx='7' ry='5'/>\
-<ellipse cx='14' cy='96' rx='6' ry='4'/>\
-<ellipse cx='24' cy='128' rx='7' ry='5'/>\
-<ellipse cx='18' cy='162' rx='6' ry='4'/>\
-</g>\
-</svg>");
-				background-size: 72px 200px;
-				opacity:0.95;
-			}
-			.vine-right {
-				right: 0;
-				transform: scaleX(-1); /* mirror the left vine */
-				background-image: url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='72' height='200' viewBox='0 0 72 200'>\
-<path d='M22 0 C28 28 6 56 22 86 C38 116 12 146 22 176' stroke='%230b6b3a' stroke-width='2' fill='none' stroke-linecap='round'/>\
-<g fill='%237fd08d'>\
-<ellipse cx='18' cy='28' rx='6' ry='4'/>\
-<ellipse cx='26' cy='60' rx='7' ry='5'/>\
-<ellipse cx='14' cy='96' rx='6' ry='4'/>\
-<ellipse cx='24' cy='128' rx='7' ry='5'/>\
-<ellipse cx='18' cy='162' rx='6' ry='4'/>\
-</g>\
-</svg>");
-				background-size: 72px 200px;
-				opacity:0.95;
-			}
-			.vine-top, .vine-bottom {
-				left: 72px;
-				right: 72px;
-				height: 64px;
-				background-repeat: repeat-x;
-				background-position: center;
-			}
-			.vine-top {
-				top: 0;
-				background-image: url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='200' height='64' viewBox='0 0 200 64'>\
-<path d='M0 40 C24 10 44 60 88 28 C140 -8 168 56 200 36' stroke='%230b6b3a' stroke-width='2' fill='none' stroke-linecap='round'/>\
-<g fill='%237fd08d'>\
-<ellipse cx='12' cy='14' rx='6' ry='4'/>\
-<ellipse cx='46' cy='8' rx='6' ry='4'/>\
-<ellipse cx='86' cy='22' rx='6' ry='4'/>\
-<ellipse cx='132' cy='6' rx='6' ry='4'/>\
-<ellipse cx='170' cy='18' rx='6' ry='4'/>\
-</g>\
-</svg>");
-				background-size: 200px 64px;
-			}
-			.vine-bottom {
-				bottom: 0;
-				background-image: url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='200' height='64' viewBox='0 0 200 64'>\
-<path d='M0 20 C24 50 44 0 88 32 C140 68 168 8 200 28' stroke='%230b6b3a' stroke-width='2' fill='none' stroke-linecap='round'/>\
-<g fill='%237fd08d'>\
-<ellipse cx='12' cy='48' rx='6' ry='4'/>\
-<ellipse cx='46' cy='56' rx='6' ry='4'/>\
-<ellipse cx='86' cy='42' rx='6' ry='4'/>\
-<ellipse cx='132' cy='58' rx='6' ry='4'/>\
-<ellipse cx='170' cy='46' rx='6' ry='4'/>\
-</g>\
-</svg>");
-				background-size: 200px 64px;
-			}
-
-			/* Slightly inset the main page so vines don't overlap content on small screens */
+			/* MAIN FRAME: vines are backgrounds on this element (inside page gutters) */
 			.main-frame {
 				position: relative;
-				padding-left: 14px;  /* small inset so left vine breathes */
-				padding-right: 14px; /* small inset so right vine breathes */
-			}
-			@media (max-width: 700px) {
-				.vine-left, .vine-right { display: none; } /* hide tall vines on small screens */
-				.vine-top, .vine-bottom { left: 12px; right: 12px; } /* reduce inset for top/bottom */
-				.main-frame { padding-left: 6px; padding-right: 6px; }
+				padding-left: calc(var(--vine-width) + 14px);  /* reserve gutter for left vine */
+				padding-right: calc(var(--vine-width) + 14px); /* reserve gutter for right vine */
+				overflow: visible;
 			}
 
-			/* --- end vine styles --- */
+			/* Vine backgrounds (inside the page, not fixed). Repeats vertically. */
+			.main-frame::before,
+			.main-frame::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: var(--vine-width);
+				pointer-events: none;
+				opacity: 0.96;
+				mix-blend-mode: normal;
+				z-index: 2; /* behind nav/content visuals (nav z-index 40) */
+			}
+
+			/* Left vine: placed inside left gutter */
+			.main-frame::before {
+				left: 8px;
+				background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='120' height='320' viewBox='0 0 120 320'>\
+  <defs>\
+    <linearGradient id='g1' x1='0' x2='0' y1='0' y2='1'>\
+      <stop offset='0' stop-color='%23249b5a'/>\
+      <stop offset='1' stop-color='%237fd08d'/>\
+    </linearGradient>\
+  </defs>\
+  <!-- vine stem -->\
+  <path d='M36 0 C40 36 12 56 28 96 C44 136 10 176 32 216 C54 256 18 292 30 320' stroke='%230b6b3a' stroke-width='3' fill='none' stroke-linecap='round'/>\
+  <!-- leaves (more leaf-shaped) -->\
+  <g fill='url(%23g1)' stroke='%23094d2a' stroke-width='0.8'>\
+    <path d='M40 18 C52 12 62 18 66 26 C62 34 50 42 40 36 C34 32 36 24 40 18 Z'/>\
+    <path d='M26 62 C38 56 52 60 58 72 C50 80 36 88 26 80 C20 74 20 68 26 62 Z'/>\
+    <path d='M36 110 C46 100 62 106 68 118 C60 126 44 134 34 126 C28 120 28 116 34 110 Z'/>\
+    <path d='M22 154 C36 146 56 152 62 168 C50 176 34 184 22 176 C16 170 16 162 22 154 Z'/>\
+    <path d='M40 206 C54 198 70 202 78 218 C64 228 46 236 36 228 C28 222 30 214 36 206 Z'/>\
+    <path d='M26 256 C40 246 60 252 66 268 C50 278 32 286 22 278 C14 270 16 260 22 256 Z'/>\
+  </g>\
+</svg>");
+				background-repeat: repeat-y;
+				background-position: left top;
+				background-size: 120px 320px;
+			}
+
+			/* Right vine: mirrored, inside right gutter */
+			.main-frame::after {
+				right: 8px;
+				background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='120' height='320' viewBox='0 0 120 320'>\
+  <defs>\
+    <linearGradient id='g2' x1='0' x2='0' y1='0' y2='1'>\
+      <stop offset='0' stop-color='%23249b5a'/>\
+      <stop offset='1' stop-color='%237fd08d'/>\
+    </linearGradient>\
+  </defs>\
+  <path d='M84 0 C80 36 108 56 92 96 C76 136 110 176 88 216 C66 256 102 292 90 320' stroke='%230b6b3a' stroke-width='3' fill='none' stroke-linecap='round'/>\
+  <g fill='url(%23g2)' stroke='%23094d2a' stroke-width='0.8'>\
+    <path d='M80 18 C68 12 58 18 54 26 C58 34 70 42 80 36 C86 32 84 24 80 18 Z'/>\
+    <path d='M94 62 C82 56 68 60 62 72 C70 80 84 88 94 80 C100 74 100 68 94 62 Z'/>\
+    <path d='M84 110 C74 100 58 106 52 118 C60 126 76 134 86 126 C92 120 92 116 86 110 Z'/>\
+    <path d='M98 154 C84 146 64 152 58 168 C74 176 90 184 100 176 C106 170 104 162 98 154 Z'/>\
+    <path d='M80 206 C66 198 50 202 42 218 C56 228 74 236 84 228 C92 222 90 214 84 206 Z'/>\
+    <path d='M94 256 C80 246 60 252 54 268 C70 278 88 286 98 278 C106 270 104 260 98 256 Z'/>\
+  </g>\
+</svg>");
+				background-repeat: repeat-y;
+				background-position: right top;
+				background-size: 120px 320px;
+			}
+
+			/* reduce vine gutters on small screens (and hide if too small) */
+			@media (max-width: 880px) {
+				:root { --vine-width: 60px; }
+				.main-frame { padding-left: calc(var(--vine-width) + 10px); padding-right: calc(var(--vine-width) + 10px); }
+				.main-frame::before, .main-frame::after { background-size: 70px 220px; width: var(--vine-width); }
+			}
+			@media (max-width: 600px) {
+				/* hide vines on very small screens to maximize space */
+				.main-frame::before, .main-frame::after { display: none; }
+				.main-frame { padding-left: 12px; padding-right: 12px; }
+			}
 
 			/* NAV */
 			#nav{
@@ -258,13 +243,7 @@
 
 	<body class="is-preload" onload="window.location.hash='#Hi'">
 
-		<!-- vine elements (decorative) -->
-		<div class="vine vine-left" aria-hidden="true"></div>
-		<div class="vine vine-right" aria-hidden="true"></div>
-		<div class="vine vine-top" aria-hidden="true"></div>
-		<div class="vine vine-bottom" aria-hidden="true"></div>
-
-		<div class="main-frame"><!-- keeps slight inset so vines don't overlap content -->
+		<div class="main-frame"><!-- vines are decorative backgrounds on this element -->
 
 		<!-- Nav -->
 		<nav id="nav">
