@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!--
-	Miniport — Xian Wang (titles moved above research photos)
+	Miniport — Xian Wang (titles above photos + decorative vine border)
 -->
 <html>
 	<head>
@@ -29,6 +29,110 @@
 				margin:0;
 				padding:0;
 			}
+
+			/* --- VINE BORDER (decorative only) --- */
+			/* Four fixed-position decorative elements (top/left/right/bottom).
+			   They are pointer-events:none so they never interfere with clicking. */
+			.vine {
+				position: fixed;
+				pointer-events: none;
+				z-index: 9999;
+				opacity: 0.92;
+				mix-blend-mode: normal;
+			}
+
+			/* Inline SVG data URLs used for the vine artwork */
+			.vine-left, .vine-right {
+				top: 0;
+				bottom: 0;
+				width: 72px;
+				background-repeat: repeat-y;
+				background-position: center;
+			}
+			.vine-left {
+				left: 0;
+				background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='72' height='200' viewBox='0 0 72 200'>\
+<path d='M22 0 C28 28 6 56 22 86 C38 116 12 146 22 176' stroke='%230b6b3a' stroke-width='2' fill='none' stroke-linecap='round'/>\
+<g fill='%237fd08d'>\
+<ellipse cx='18' cy='28' rx='6' ry='4'/>\
+<ellipse cx='26' cy='60' rx='7' ry='5'/>\
+<ellipse cx='14' cy='96' rx='6' ry='4'/>\
+<ellipse cx='24' cy='128' rx='7' ry='5'/>\
+<ellipse cx='18' cy='162' rx='6' ry='4'/>\
+</g>\
+</svg>");
+				background-size: 72px 200px;
+				opacity:0.95;
+			}
+			.vine-right {
+				right: 0;
+				transform: scaleX(-1); /* mirror the left vine */
+				background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='72' height='200' viewBox='0 0 72 200'>\
+<path d='M22 0 C28 28 6 56 22 86 C38 116 12 146 22 176' stroke='%230b6b3a' stroke-width='2' fill='none' stroke-linecap='round'/>\
+<g fill='%237fd08d'>\
+<ellipse cx='18' cy='28' rx='6' ry='4'/>\
+<ellipse cx='26' cy='60' rx='7' ry='5'/>\
+<ellipse cx='14' cy='96' rx='6' ry='4'/>\
+<ellipse cx='24' cy='128' rx='7' ry='5'/>\
+<ellipse cx='18' cy='162' rx='6' ry='4'/>\
+</g>\
+</svg>");
+				background-size: 72px 200px;
+				opacity:0.95;
+			}
+			.vine-top, .vine-bottom {
+				left: 72px;
+				right: 72px;
+				height: 64px;
+				background-repeat: repeat-x;
+				background-position: center;
+			}
+			.vine-top {
+				top: 0;
+				background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='200' height='64' viewBox='0 0 200 64'>\
+<path d='M0 40 C24 10 44 60 88 28 C140 -8 168 56 200 36' stroke='%230b6b3a' stroke-width='2' fill='none' stroke-linecap='round'/>\
+<g fill='%237fd08d'>\
+<ellipse cx='12' cy='14' rx='6' ry='4'/>\
+<ellipse cx='46' cy='8' rx='6' ry='4'/>\
+<ellipse cx='86' cy='22' rx='6' ry='4'/>\
+<ellipse cx='132' cy='6' rx='6' ry='4'/>\
+<ellipse cx='170' cy='18' rx='6' ry='4'/>\
+</g>\
+</svg>");
+				background-size: 200px 64px;
+			}
+			.vine-bottom {
+				bottom: 0;
+				background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='200' height='64' viewBox='0 0 200 64'>\
+<path d='M0 20 C24 50 44 0 88 32 C140 68 168 8 200 28' stroke='%230b6b3a' stroke-width='2' fill='none' stroke-linecap='round'/>\
+<g fill='%237fd08d'>\
+<ellipse cx='12' cy='48' rx='6' ry='4'/>\
+<ellipse cx='46' cy='56' rx='6' ry='4'/>\
+<ellipse cx='86' cy='42' rx='6' ry='4'/>\
+<ellipse cx='132' cy='58' rx='6' ry='4'/>\
+<ellipse cx='170' cy='46' rx='6' ry='4'/>\
+</g>\
+</svg>");
+				background-size: 200px 64px;
+			}
+
+			/* Slightly inset the main page so vines don't overlap content on small screens */
+			.main-frame {
+				position: relative;
+				padding-left: 14px;  /* small inset so left vine breathes */
+				padding-right: 14px; /* small inset so right vine breathes */
+			}
+			@media (max-width: 700px) {
+				.vine-left, .vine-right { display: none; } /* hide tall vines on small screens */
+				.vine-top, .vine-bottom { left: 12px; right: 12px; } /* reduce inset for top/bottom */
+				.main-frame { padding-left: 6px; padding-right: 6px; }
+			}
+
+			/* --- end vine styles --- */
 
 			/* NAV */
 			#nav{
@@ -153,6 +257,14 @@
 	</head>
 
 	<body class="is-preload" onload="window.location.hash='#Hi'">
+
+		<!-- vine elements (decorative) -->
+		<div class="vine vine-left" aria-hidden="true"></div>
+		<div class="vine vine-right" aria-hidden="true"></div>
+		<div class="vine vine-top" aria-hidden="true"></div>
+		<div class="vine vine-bottom" aria-hidden="true"></div>
+
+		<div class="main-frame"><!-- keeps slight inset so vines don't overlap content -->
 
 		<!-- Nav -->
 		<nav id="nav">
@@ -281,5 +393,6 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 
+		</div><!-- end .main-frame -->
 	</body>
 </html>
