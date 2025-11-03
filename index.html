@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!--
-	Miniport — Xian Wang (subtler, more natural flowing American-ivy gutters)
+	Miniport — Xian Wang (titles moved above research photos; vines drawn on top)
 -->
 <html>
 	<head>
@@ -49,7 +49,7 @@
 				width: var(--vine-width);
 				pointer-events: none;
 				opacity: 0.7; /* slightly reduced so vines recede */
-				z-index: 2;
+				z-index: 9999; /* moved on top of everything */
 				filter: drop-shadow(0 4px 8px rgba(8,24,10,0.03));
 			}
 
@@ -132,7 +132,7 @@
 			@media (max-width: 880px) {
 				:root { --vine-width: 70px; }
 				.main-frame { padding-left: calc(var(--vine-width) + 10px); padding-right: calc(var(--vine-width) + 10px); }
-				.main-frame::before, .main-frame::after { background-size: 140px 1400px; width: var(--vine-width); opacity:0.75; }
+				.main-frame::before, .main-frame::after { background-size: 140px 1400px; width: var(--vine-width); opacity:0.75; z-index:9999; }
 			}
 			@media (max-width: 600px) {
 				.main-frame::before, .main-frame::after { display: none; }
@@ -268,7 +268,7 @@
 
 	<body class="is-preload" onload="window.location.hash='#Hi'">
 
-		<div class="main-frame"><!-- ivy gutters updated to be subtler and more flowing -->
+		<div class="main-frame"><!-- ivy gutters updated to be subtler and more flowing, now placed on top -->
 
 		<!-- Nav -->
 		<nav id="nav">
