@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!--
-	Miniport — Xian Wang (titles moved above research photos; vines drawn on top)
+	Miniport — Xian Wang (subtle gutter leaves behind content; nothing overlaps photos/text)
 -->
 <html>
 	<head>
@@ -19,7 +19,7 @@
 				--muted:#6b6b6b;
 				--card-bg:rgba(255,255,255,0.96);
 				--research-accent:#0f5e36;
-				--vine-width:110px; /* gutter reserved for ivy */
+				--gutter-width:110px; /* reserved gutter for leaf accents */
 			}
 
 			html,body{
@@ -31,113 +31,97 @@
 				padding:0;
 			}
 
-			/* MAIN FRAME: ivy vines are background images on this element (inside gutters).
-			   Updated: subtler color, smaller leaves, more vertical spacing, smoother stems and slight tilt. */
+			/* MAIN FRAME: reserves gutters and places subtle leaf accents behind content */
 			.main-frame {
 				position: relative;
-				padding-left: calc(var(--vine-width) + 14px);  /* left gutter for ivy */
-				padding-right: calc(var(--vine-width) + 14px); /* right gutter for ivy */
+				padding-left: calc(var(--gutter-width) + 14px);  /* left gutter for leaves */
+				padding-right: calc(var(--gutter-width) + 14px); /* right gutter for leaves */
 				overflow: visible;
 			}
 
+			/* leaf accents are decorative and sit behind everything (z-index: 0) */
 			.main-frame::before,
 			.main-frame::after {
 				content: "";
 				position: absolute;
 				top: 0;
 				bottom: 0;
-				width: var(--vine-width);
+				width: var(--gutter-width);
 				pointer-events: none;
-				opacity: 0.7; /* slightly reduced so vines recede */
-				z-index: 9999; /* moved on top of everything */
-				filter: drop-shadow(0 4px 8px rgba(8,24,10,0.03));
+				opacity: 0.55;
+				z-index: 0; /* behind page content */
+				background-repeat: repeat-y;
+				background-position: center top;
+				/* slight blur so leaves are unobtrusive */
+				filter: blur(0.4px) saturate(0.95);
 			}
 
-			/* LEFT ivy: smoother stem, smaller leaves, more vertical spacing, paler greens */
+			/* LEFT decorative leaves (small, sparse, leaf-shaped SVG patterns) */
 			.main-frame::before {
-				left: 10px;
+				left: 8px;
 				background-image: url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='220' height='2200' viewBox='0 0 220 2200'>\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 720' width='120' height='720'>\
   <defs>\
-    <linearGradient id='gL' x1='0' x2='0' y1='0' y2='1'>\
-      <stop offset='0' stop-color='%231b7d46' stop-opacity='0.98'/>\
-      <stop offset='1' stop-color='%238cd99b' stop-opacity='0.86'/>\
+    <linearGradient id='L' x1='0' x2='0' y1='0' y2='1'>\
+      <stop offset='0' stop-color='%23249b5a'/>\
+      <stop offset='1' stop-color='%237fd08d'/>\
     </linearGradient>\
   </defs>\
-  <!-- smooth flowing stem (gentle S-shape) -->\
-  <path d='M110 0 C98 120 70 260 92 420 C116 580 84 760 108 940 C132 1120 96 1310 110 1500 C124 1690 88 1880 110 2200' stroke='%23063f25' stroke-width='2.2' fill='none' stroke-linecap='round' opacity='0.95'/>\
-  <!-- sparse smaller American-ivy style leaves, rotated variably for flow -->\
-  <g fill='url(%23gL)' stroke='%23063f25' stroke-width='0.6' transform='scale(0.56)'>\
-    <g transform='translate(60,140) rotate(-18)'>\
-      <path d='M48 10 C58 2 74 8 84 28 C84 46 68 70 48 74 C30 70 18 48 22 30 C26 12 36 18 48 10 Z'/>\
+  <g fill='url(%23L)' stroke='%230b6b3a' stroke-width='0.6' opacity='0.98'>\
+    <g transform='translate(20,40) scale(0.7)'>\
+      <path d='M36 6 C50 -2 66 6 74 24 C72 44 56 66 36 70 C18 66 8 44 12 26 C16 10 26 12 36 6 Z'/>\
     </g>\
-    <g transform='translate(72,540) rotate(16)'>\
-      <path d='M56 12 C68 6 86 14 96 36 C94 58 74 84 54 90 C36 86 26 62 30 38 C34 20 44 18 56 12 Z'/>\
+    <g transform='translate(18,240) scale(0.6)'>\
+      <path d='M36 6 C50 -2 66 6 74 24 C72 44 56 66 36 70 C18 66 8 44 12 26 C16 10 26 12 36 6 Z'/>\
     </g>\
-    <g transform='translate(40,960) rotate(-12)'>\
-      <path d='M58 14 C72 8 90 16 100 40 C96 64 74 90 52 96 C36 92 26 66 32 42 C36 24 46 20 58 14 Z'/>\
-    </g>\
-    <g transform='translate(68,1440) rotate(10)'>\
-      <path d='M62 10 C76 4 94 12 104 34 C100 58 82 86 60 92 C44 88 34 64 40 38 C46 20 56 14 62 10 Z'/>\
-    </g>\
-    <g transform='translate(76,1880) rotate(-6)'>\
-      <path d='M58 12 C72 6 90 14 100 36 C98 58 78 86 58 92 C44 88 34 66 38 40 C42 22 50 16 58 12 Z'/>\
+    <g transform='translate(24,520) scale(0.65)'>\
+      <path d='M36 6 C50 -2 66 6 74 24 C72 44 56 66 36 70 C18 66 8 44 12 26 C16 10 26 12 36 6 Z'/>\
     </g>\
   </g>\
 </svg>");
-				background-repeat: repeat-y;
-				background-position: left top;
-				/* larger pattern height spaces leaves farther apart */
-				background-size: 220px 2200px;
-				transform: rotate(-4deg); /* subtle tilt for flow */
+				/* larger pattern height -> sparser leaves */
+				background-size: 120px 720px;
 			}
 
-			/* RIGHT ivy: mirrored, similar adjustments */
+			/* RIGHT decorative leaves (mirrored) */
 			.main-frame::after {
-				right: 10px;
+				right: 8px;
 				background-image: url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='220' height='2200' viewBox='0 0 220 2200'>\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 720' width='120' height='720'>\
   <defs>\
-    <linearGradient id='gR' x1='0' x2='0' y1='0' y2='1'>\
-      <stop offset='0' stop-color='%231b7d46' stop-opacity='0.98'/>\
-      <stop offset='1' stop-color='%238cd99b' stop-opacity='0.86'/>\
+    <linearGradient id='R' x1='0' x2='0' y1='0' y2='1'>\
+      <stop offset='0' stop-color='%23249b5a'/>\
+      <stop offset='1' stop-color='%237fd08d'/>\
     </linearGradient>\
   </defs>\
-  <path d='M110 0 C122 110 150 260 132 420 C110 580 144 760 120 940 C96 1120 132 1310 110 1500 C88 1690 124 1880 110 2200' stroke='%23063f25' stroke-width='2.2' fill='none' stroke-linecap='round' opacity='0.95'/>\
-  <g fill='url(%23gR)' stroke='%23063f25' stroke-width='0.6' transform='scale(0.56)'>\
-    <g transform='translate(100,140) rotate(14)'>\
-      <path d='M48 10 C58 2 74 8 84 28 C84 46 68 70 48 74 C30 70 18 48 22 30 C26 12 36 18 48 10 Z'/>\
+  <g fill='url(%23R)' stroke='%230b6b3a' stroke-width='0.6' opacity='0.98'>\
+    <g transform='translate(80,40) scale(0.7)'>\
+      <path d='M36 6 C50 -2 66 6 74 24 C72 44 56 66 36 70 C18 66 8 44 12 26 C16 10 26 12 36 6 Z'/>\
     </g>\
-    <g transform='translate(88,540) rotate(-14)'>\
-      <path d='M56 12 C68 6 86 14 96 36 C94 58 74 84 54 90 C36 86 26 62 30 38 C34 20 44 18 56 12 Z'/>\
+    <g transform='translate(86,240) scale(0.6)'>\
+      <path d='M36 6 C50 -2 66 6 74 24 C72 44 56 66 36 70 C18 66 8 44 12 26 C16 10 26 12 36 6 Z'/>\
     </g>\
-    <g transform='translate(116,960) rotate(10)'>\
-      <path d='M58 14 C72 8 90 16 100 40 C96 64 74 90 52 96 C36 92 26 66 32 42 C36 24 46 20 58 14 Z'/>\
-    </g>\
-    <g transform='translate(92,1440) rotate(-8)'>\
-      <path d='M62 10 C76 4 94 12 104 34 C100 58 82 86 60 92 C44 88 34 64 40 38 C46 20 56 14 62 10 Z'/>\
-    </g>\
-    <g transform='translate(84,1880) rotate(6)'>\
-      <path d='M58 12 C72 6 90 14 100 36 C98 58 78 86 58 92 C44 88 34 66 38 40 C42 22 50 16 58 12 Z'/>\
+    <g transform='translate(78,520) scale(0.65)'>\
+      <path d='M36 6 C50 -2 66 6 74 24 C72 44 56 66 36 70 C18 66 8 44 12 26 C16 10 26 12 36 6 Z'/>\
     </g>\
   </g>\
 </svg>");
-				background-repeat: repeat-y;
-				background-position: right top;
-				background-size: 220px 2200px;
-				transform: rotate(4deg);
+				background-size: 120px 720px;
 			}
 
-			/* reduce vine gutters on small screens; hide on very small */
+			/* On smaller screens reduce gutter size and hide accents on tiny devices */
 			@media (max-width: 880px) {
-				:root { --vine-width: 70px; }
-				.main-frame { padding-left: calc(var(--vine-width) + 10px); padding-right: calc(var(--vine-width) + 10px); }
-				.main-frame::before, .main-frame::after { background-size: 140px 1400px; width: var(--vine-width); opacity:0.75; z-index:9999; }
+				:root { --gutter-width: 70px; }
+				.main-frame { padding-left: calc(var(--gutter-width) + 12px); padding-right: calc(var(--gutter-width) + 12px); }
+				.main-frame::before, .main-frame::after { background-size: 90px 540px; width: var(--gutter-width); opacity:0.5; }
 			}
 			@media (max-width: 600px) {
 				.main-frame::before, .main-frame::after { display: none; }
 				.main-frame { padding-left: 12px; padding-right: 12px; }
 			}
+
+			/* ensure content sits above the decorative leaves */
+			.main-frame > * { position: relative; z-index: 1; }
 
 			/* NAV */
 			#nav{
@@ -268,7 +252,7 @@
 
 	<body class="is-preload" onload="window.location.hash='#Hi'">
 
-		<div class="main-frame"><!-- ivy gutters updated to be subtler and more flowing, now placed on top -->
+		<div class="main-frame"><!-- subtle leaf accents in gutters (behind content) -->
 
 		<!-- Nav -->
 		<nav id="nav">
