@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <!--
-	Miniport — Xian Wang (smaller, subtler ivy leaves)
+	Miniport — Xian Wang (titles moved above research photos)
 -->
 <html>
 	<head>
@@ -19,7 +19,7 @@
 				--muted:#6b6b6b;
 				--card-bg:rgba(255,255,255,0.96);
 				--research-accent:#0f5e36;
-				--vine-width:110px;
+				--vine-width:110px; /* gutter reserved for ivy */
 			}
 
 			html,body{
@@ -31,11 +31,12 @@
 				padding:0;
 			}
 
-			/* Main frame with smaller ivy vines */
+			/* MAIN FRAME: ivy vines are background images on this element (inside gutters).
+			   Updated to be sparser, more flowing, with American-ivy shaped leaves. */
 			.main-frame {
 				position: relative;
-				padding-left: calc(var(--vine-width) + 14px);
-				padding-right: calc(var(--vine-width) + 14px);
+				padding-left: calc(var(--vine-width) + 14px);  /* left gutter for ivy */
+				padding-right: calc(var(--vine-width) + 14px); /* right gutter for ivy */
 				overflow: visible;
 			}
 
@@ -47,79 +48,67 @@
 				bottom: 0;
 				width: var(--vine-width);
 				pointer-events: none;
-				opacity: 0.85;
+				opacity: 0.95;
 				z-index: 2;
 			}
 
-			/* LEFT ivy — smaller leaves (scaled down to 0.5) and more spaced */
+			/* LEFT ivy: flowing tendril with sparse American-ivy leaves (classic lobed heart shape).
+			   background-size increased so leaves appear less dense (repeat-y spacing larger). */
 			.main-frame::before {
 				left: 8px;
 				background-image: url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='180' height='1600' viewBox='0 0 180 1600'>\
+<svg xmlns='http://www.w3.org/2000/svg' width='140' height='720' viewBox='0 0 140 720'>\
   <defs>\
     <linearGradient id='ivyL' x1='0' y1='0' x2='0' y2='1'>\
       <stop offset='0' stop-color='%23249b5a'/>\
       <stop offset='1' stop-color='%236fcf7f'/>\
     </linearGradient>\
   </defs>\
-  <path d='M90 0 C70 140 40 300 70 500 C100 700 60 900 90 1100 C120 1300 80 1500 90 1600' stroke='%230b6b3a' stroke-width='2.4' fill='none' stroke-linecap='round'/>\
-  <g transform='translate(0,60) scale(0.5)' fill='url(%23ivyL)' stroke='%23094d2a' stroke-width='0.8' stroke-linejoin='round'>\
-    <g transform='translate(20,80) rotate(-12)'>\
-      <path d='M56 12 C44 2 30 8 22 26 C20 44 34 70 56 78 C78 70 92 44 90 26 C82 8 68 2 56 12 Z'/>\
-    </g>\
-    <g transform='translate(28,400) rotate(10)'>\
-      <path d='M64 14 C50 4 36 12 30 34 C28 56 44 82 66 88 C86 82 98 56 96 34 C90 12 76 6 64 14 Z'/>\
-    </g>\
-    <g transform='translate(12,780) rotate(-8)'>\
-      <path d='M58 16 C46 6 34 12 28 36 C26 62 46 92 70 98 C92 92 104 64 100 36 C94 14 80 8 58 16 Z'/>\
-    </g>\
-    <g transform='translate(24,1200) rotate(6)'>\
-      <path d='M66 10 C52 0 36 6 30 32 C28 56 44 86 68 94 C92 86 106 58 102 32 C96 10 78 4 66 10 Z'/>\
-    </g>\
+  <!-- long flowing stem -->\
+  <path d='M70 0 C66 60 40 110 54 180 C70 260 36 340 64 420 C92 500 58 580 72 660' stroke='%230b6b3a' stroke-width='2.6' fill='none' stroke-linecap='round'/>\
+  <!-- 4 spaced ivy leaves (American ivy shape) -->\
+  <g transform='translate(0,40)' fill='url(%23ivyL)' stroke='%23094d2a' stroke-width='0.8'>\
+    <path d='M72 36 C86 28 102 36 108 52 C104 70 86 92 68 88 C58 86 56 70 64 56 C66 50 68 42 72 36 Z'/>\
+    <path d='M58 156 C72 146 92 152 100 174 C92 192 68 212 52 204 C44 198 46 182 58 156 Z'/>\
+    <path d='M64 300 C78 288 98 296 106 318 C94 336 70 356 54 348 C46 342 48 326 64 300 Z'/>\
+    <path d='M66 464 C80 450 100 456 108 478 C96 496 72 516 56 508 C48 502 50 486 66 464 Z'/>\
   </g>\
 </svg>");
 				background-repeat: repeat-y;
 				background-position: left top;
-				background-size: 180px 1600px;
+				/* large vertical pattern to space leaves out */
+				background-size: 140px 720px;
 			}
 
-			/* RIGHT ivy — mirrored smaller leaves */
+			/* RIGHT ivy: mirrored flow, similarly sparse */
 			.main-frame::after {
 				right: 8px;
 				background-image: url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' width='180' height='1600' viewBox='0 0 180 1600'>\
+<svg xmlns='http://www.w3.org/2000/svg' width='140' height='720' viewBox='0 0 140 720'>\
   <defs>\
     <linearGradient id='ivyR' x1='0' y1='0' x2='0' y2='1'>\
       <stop offset='0' stop-color='%23249b5a'/>\
       <stop offset='1' stop-color='%236fcf7f'/>\
     </linearGradient>\
   </defs>\
-  <path d='M90 0 C110 140 140 300 110 500 C80 700 120 900 90 1100 C60 1300 100 1500 90 1600' stroke='%230b6b3a' stroke-width='2.4' fill='none' stroke-linecap='round'/>\
-  <g transform='translate(0,60) scale(0.5)' fill='url(%23ivyR)' stroke='%23094d2a' stroke-width='0.8' stroke-linejoin='round'>\
-    <g transform='translate(80,80) rotate(12)'>\
-      <path d='M56 12 C44 2 30 8 22 26 C20 44 34 70 56 78 C78 70 92 44 90 26 C82 8 68 2 56 12 Z'/>\
-    </g>\
-    <g transform='translate(72,400) rotate(-10)'>\
-      <path d='M64 14 C50 4 36 12 30 34 C28 56 44 82 66 88 C86 82 98 56 96 34 C90 12 76 6 64 14 Z'/>\
-    </g>\
-    <g transform='translate(88,780) rotate(8)'>\
-      <path d='M58 16 C46 6 34 12 28 36 C26 62 46 92 70 98 C92 92 104 64 100 36 C94 14 80 8 58 16 Z'/>\
-    </g>\
-    <g transform='translate(68,1200) rotate(-6)'>\
-      <path d='M66 10 C52 0 36 6 30 32 C28 56 44 86 68 94 C92 86 106 58 102 32 C96 10 78 4 66 10 Z'/>\
-    </g>\
+  <path d='M70 0 C74 60 100 110 86 180 C70 260 104 340 76 420 C48 500 82 580 68 660' stroke='%230b6b3a' stroke-width='2.6' fill='none' stroke-linecap='round'/>\
+  <g transform='translate(0,40)' fill='url(%23ivyR)' stroke='%23094d2a' stroke-width='0.8'>\
+    <path d='M68 36 C54 28 38 36 32 52 C36 70 54 92 72 88 C82 86 84 70 76 56 C74 50 72 42 68 36 Z'/>\
+    <path d='M82 156 C68 146 48 152 40 174 C48 192 72 212 88 204 C96 198 94 182 82 156 Z'/>\
+    <path d='M76 300 C62 288 42 296 34 318 C46 336 70 356 86 348 C94 342 92 326 76 300 Z'/>\
+    <path d='M74 464 C60 450 40 456 32 478 C44 496 68 516 84 508 C92 502 90 486 74 464 Z'/>\
   </g>\
 </svg>");
 				background-repeat: repeat-y;
 				background-position: right top;
-				background-size: 180px 1600px;
+				background-size: 140px 720px;
 			}
 
 			/* reduce vine gutters on small screens; hide on very small */
 			@media (max-width: 880px) {
 				:root { --vine-width: 70px; }
 				.main-frame { padding-left: calc(var(--vine-width) + 10px); padding-right: calc(var(--vine-width) + 10px); }
-				.main-frame::before, .main-frame::after { background-size: 110px 1100px; width: var(--vine-width); opacity:0.9; }
+				.main-frame::before, .main-frame::after { background-size: 90px 480px; width: var(--vine-width); }
 			}
 			@media (max-width: 600px) {
 				.main-frame::before, .main-frame::after { display: none; }
@@ -141,7 +130,7 @@
 			#nav a{color:var(--green-1);text-decoration:none;font-weight:600;padding:0.5rem 0.9rem;border-radius:6px;transition:all .18s ease;}
 			#nav a:hover{background:var(--green-3);color:#08321a;transform:translateY(-2px);box-shadow:0 6px 14px rgba(37,94,58,0.08);}
 
-			/* Everything else unchanged */
+			/* HOME */
 			.wrapper.style1{padding:3.2rem 0;}
 			#Hi .container{display:flex;gap:2rem;align-items:center;justify-content:center;flex-wrap:wrap;}
 			#Hi .image.fit img{width:100%;height:auto;border-radius:12px;box-shadow:0 12px 30px rgba(21,50,21,0.06);border:1px solid rgba(10,40,10,0.05);}
@@ -154,51 +143,241 @@
 				box-shadow:0 10px 24px rgba(18,72,39,0.12);
 			}
 			.button.large.scrolly:hover{transform:translateY(-3px);}
+
+			/* RESEARCH */
+			.wrapper.style3{
+				background:transparent;
+				padding:3rem 0 2rem;
+				text-align:center;
+			}
+			.wrapper.style3 header{max-width:900px;margin:0 auto 2rem;}
+			.wrapper.style3 header h2{color:var(--research-accent);font-weight:700;font-size:1.8rem;margin-bottom:0.6rem;}
+			.wrapper.style3 header p{
+				color:rgba(25,70,35,0.9);
+				font-size:1.05rem;
+				line-height:1.7;
+				max-width:800px;
+				margin:0 auto;
+			}
+			.wrapper.style3 header h2 span{color:var(--green-2);font-weight:700;}
+
+			.row{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;}
+			.col-4{flex:1 1 30%;max-width:360px;display:flex;flex-direction:column;align-items:stretch;}
+
+			.box.style2{
+				background:var(--card-bg);
+				border-radius:12px;
+				padding:0.85rem;
+				box-shadow:0 10px 26px rgba(10,30,10,0.05);
+				border-left:6px solid rgba(37,94,58,0.12);
+				transition:transform .16s ease,box-shadow .16s ease,border-left-color .16s ease;
+				display:flex;
+				flex-direction:column;
+				align-items:center;
+				text-align:center;
+			}
+			.box.style2:hover{
+				transform:translateY(-6px);
+				box-shadow:0 22px 48px rgba(12,45,20,0.08);
+				border-left-color:var(--green-2);
+			}
+
+			/* tightened spacing: title above image, small gap */
+			.box.style2 h3{
+				margin:0 0 0.18rem;
+				font-size:1.1rem;
+				color:var(--green-1);
+				font-weight:700;
+			}
+			.box.style2 .image.featured{
+				width:100%;
+				border-radius:8px;
+				background:#f4faf4;
+				display:flex;
+				align-items:center;
+				justify-content:center;
+				padding:0.35rem;
+				margin-top:0;
+				margin-bottom:0.6rem;
+			}
+			.box.style2 .image.featured img{
+				width:100%;
+				height:220px;
+				object-fit:cover;
+				display:block;
+				border-radius:8px;
+			}
+
+			/* research description moved outside card (under each card) */
+			.research-desc {
+				margin-top:0.6rem;
+				color:#2d3b2d;
+				font-size:0.96rem;
+				line-height:1.55;
+				text-align:center;
+				padding:0 0.4rem 0.4rem 0.4rem;
+			}
+
+			/* FUN */
+			.wrapper.style2{padding:2.25rem 0;}
+			.wrapper.style2 .row.aln-center{display:flex;flex-wrap:nowrap;justify-content:center;align-items:stretch;gap:1.5rem;}
+			.box.style1{
+				background:linear-gradient(180deg,rgba(255,255,255,0.95),rgba(246,255,246,0.95));
+				border-radius:12px;padding:0.65rem;text-align:center;
+				transition:transform .18s ease,box-shadow .18s ease;border:1px solid rgba(34,85,34,0.06);
+				flex:1 1 30%;max-width:360px;
+			}
+			.box.style1:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(15,60,20,0.08);}
+			.box.style1 .image.fit img{width:100%;height:220px;object-fit:cover;border-radius:10px;display:block;margin-bottom:0.6rem;}
+			.box.style1 h3{margin:0.25rem 0;color:var(--green-1);font-size:1.05rem;}
+			.box.style1 p{margin:0;color:var(--muted);font-size:0.95rem;}
+
+			@media(max-width:850px){
+				.wrapper.style2 .row.aln-center{flex-wrap:wrap;}
+				.box.style1{flex:1 1 100%;max-width:100%;}
+				.col-4{max-width:100%; flex:1 1 100%;}
+			}
+
+			#copyright{display:flex;gap:1rem;justify-content:center;color:rgba(20,50,20,0.6);font-size:0.9rem;padding:0.6rem 0;}
 		</style>
 	</head>
 
 	<body class="is-preload" onload="window.location.hash='#Hi'">
 
-		<div class="main-frame">
-			<!-- Nav -->
-			<nav id="nav">
-				<ul class="container">
-					<li><a href="#Hi">Hi</a></li>
-					<li><a href="#Research">Research</a></li>
-					<li><a href="#Fun">Fun</a></li>
-				</ul>
-			</nav>
+		<div class="main-frame"><!-- ivy vines are now sparser, flowing American-ivy style inside gutters -->
 
-			<!-- Home -->
-			<article id="Hi" class="wrapper style1">
-				<div class="container">
-					<div class="row" style="align-items:center;">
-						<div class="col-4 col-5-large col-12-medium" style="padding:0.6rem;">
-							<span class="image fit"><img src="images/pic00.jpg" alt="Xian portrait" /></span>
-							<p class="contact-info">📧 xw91@iu.edu<br>📧 ahunwx@gmail.com</p>
-						</div>
-						<div class="col-8 col-7-large col-12-medium" style="padding:0.6rem;">
-							<header><h1>Hi. I'm <strong>Xian...</strong>.</h1></header>
-							<p>I develop scalable, science-based approaches to strengthen the role of terrestrial ecosystems in climate mitigation and adaptation, integrating field data, remote sensing, and informatics to inform policy and land management.</p>
-							<a href="#Research" class="button large scrolly">Learn about what I do</a>
-						</div>
+		<!-- Nav -->
+		<nav id="nav">
+			<ul class="container">
+				<li><a href="#Hi">Hi</a></li>
+				<li><a href="#Research">Research</a></li>
+				<li><a href="#Fun">Fun</a></li>
+			</ul>
+		</nav>
+
+		<!-- Home -->
+		<article id="Hi" class="wrapper style1">
+			<div class="container">
+				<div class="row" style="align-items:center;">
+					<div class="col-4 col-5-large col-12-medium" style="padding:0.6rem;">
+						<span class="image fit"><img src="images/pic00.jpg" alt="Xian portrait" /></span>
+						<p class="contact-info">📧 xw91@iu.edu<br>📧 ahunwx@gmail.com</p>
+					</div>
+					<div class="col-8 col-7-large col-12-medium" style="padding:0.6rem;">
+						<header><h1>Hi. I'm <strong>Xian...</strong>.</h1></header>
+						<p>I develop scalable, science-based approaches to strengthen the role of terrestrial ecosystems in climate mitigation and adaptation, integrating field data, remote sensing, and informatics to inform policy and land management.</p>
+						<a href="#Research" class="button large scrolly">Learn about what I do</a>
 					</div>
 				</div>
-			</article>
+			</div>
+		</article>
 
-			<!-- Research -->
-			<article id="Research" class="wrapper style3">
-				<div class="container">
-					<header>
-						<h2 style="color:#000;">🔬🌿 My research: Decoding Earth’s Signals for Solutions</h2>
-						<p>My research bridges <strong>ecosystem ecology</strong> and <strong>environmental data science</strong> — linking <em>ecological processes</em> 🌿 with <em>novel sensing technologies</em> 🛰️ and <em>computational tools</em> 💻 to better understand and manage ecosystems under global change.</p>
-					</header>
-					<!-- Research cards (unchanged content) -->
-					<!-- ... your existing research cards here ... -->
+		<!-- Research -->
+		<article id="Research" class="wrapper style3">
+			<div class="container">
+				<header>
+					<h2 style="color:#000;">🔬🌿 My research: Decoding Earth’s Signals for Solutions</h2>
+					<p>My research bridges <strong>ecosystem ecology</strong> and <strong>environmental data science</strong> — linking <em>ecological processes</em> 🌿 
+					with <em>novel sensing technologies</em> 🛰️ and <em>computational tools</em> 💻 to better understand and manage ecosystems under global change.</p>
+				</header>
+
+				<div class="row">
+					<div class="col-4">
+						<article class="box style2" aria-labelledby="r1">
+							<h3 id="r1">No-till</h3>
+							<div class="image featured"><img src="images/pic01.jpg" alt="No-till" /></div>
+						</article>
+						<div class="research-desc">No-till's albedo benefits comparable to cover cropping.</div>
+					</div>
+
+					<div class="col-4">
+						<article class="box style2" aria-labelledby="r2">
+							<h3 id="r2">Cover cropping</h3>
+							<div class="image featured"><img src="images/pic02.jpg" alt="Cover cropping" /></div>
+						</article>
+						<div class="research-desc">Cover crops enhance soil health and rebuild carbon in Midwestern croplands.</div>
+					</div>
+
+					<div class="col-4">
+						<article class="box style2" aria-labelledby="r3">
+							<h3 id="r3">Forest carbon flux mapping</h3>
+							<div class="image featured"><img src="images/pic03.jpg" alt="Forest carbon flux" /></div>
+						</article>
+						<div class="research-desc">Mapping carbon fluxes by combining satellite data with flux tower observations.</div>
+					</div>
+
+					<div class="col-4">
+						<article class="box style2" aria-labelledby="r4">
+							<h3 id="r4">Proximal measurements</h3>
+							<div class="image featured"><img src="images/pic04.jpg" alt="Proximal measurements" /></div>
+						</article>
+						<div class="research-desc">Using fluorescence and reflectance to track productivity and drought stress.</div>
+					</div>
+
+					<div class="col-4">
+						<article class="box style2" aria-labelledby="r5">
+							<h3 id="r5">Dryland GPP monitoring</h3>
+							<div class="image featured"><img src="images/pic05.jpg" alt="Dryland monitoring" /></div>
+						</article>
+						<div class="research-desc">Developing data-driven frameworks to study ecosystem dynamics in drylands.</div>
+					</div>
+
+					<div class="col-4">
+						<article class="box style2" aria-labelledby="r6">
+							<h3 id="r6">Global phenology</h3>
+							<div class="image featured"><img src="images/pic06.jpg" alt="Global Phenology" /></div>
+						</article>
+						<div class="research-desc">Revealing global patterns of synchronized growth and divergent senescence.</div>
+					</div>
 				</div>
-			</article>
+			</div>
+		</article>
 
-			<!-- Fun section remains unchanged -->
-		</div>
+		<!-- Fun -->
+		<article id="Fun" class="wrapper style2">
+			<div class="container">
+				<header>
+					<h2>🌿 Plant person • life & hobbies</h2>
+					<p>Small green moments from my life — plant care, curiosities, and cozy corners.</p>
+				</header>
+				<div class="row aln-center" style="justify-content:center;">
+					<div class="col-4">
+						<section class="box style1">
+							<span class="image fit"><img src="images/pic07.jpg" alt="Sunny sanctuary" /></span>
+							<h3>Sunny sanctuary</h3>
+							<p>A cozy corner filled with thriving houseplants basking in warm morning light.</p>
+						</section>
+					</div>
+					<div class="col-4">
+						<section class="box style1">
+							<span class="image fit"><img src="images/pic08.jpg" alt="Nature-inspired rings" /></span>
+							<h3>Nature-inspired rings</h3>
+							<p>Handcrafted silver rings engraved with organic, nature-inspired patterns.</p>
+						</section>
+					</div>
+					<div class="col-4">
+						<section class="box style1">
+							<span class="image fit"><img src="images/pic09.jpg" alt="Neko" /></span>
+							<h3>Neko</h3>
+							<p>Neko blissfully melting into the carpet.</p>
+						</section>
+					</div>
+				</div>
+				<footer style="margin-top:1.25rem;">
+					<p style="color:var(--muted);">I keep my site research-first, but plants and small green projects sneak in here and there.</p>
+					<a href="#Research" class="button large scrolly" style="background:linear-gradient(180deg,var(--green-3),var(--green-2));">Back to research</a>
+				</footer>
+			</div>
+		</article>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+		</div><!-- end .main-frame -->
 	</body>
 </html>
